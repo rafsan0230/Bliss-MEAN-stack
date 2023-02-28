@@ -1,6 +1,6 @@
-const { model, Schema } = require('mongoose');
+const mongoose = require('./../db');
 
-const TherapistSchema = new Schema({
+const TherapistSchema = mongoose.Schema({
       name: {
         type: String
       },
@@ -20,5 +20,4 @@ const TherapistSchema = new Schema({
       }
 })
 
-const Therapist = model('Therapist', TherapistSchema);
-module.exports = Therapist;
+module.exports = mongoose.model('Therapist', TherapistSchema);
