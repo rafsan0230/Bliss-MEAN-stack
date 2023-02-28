@@ -1,0 +1,46 @@
+.link-button{
+    text-decoration: none;
+    background-image: linear-gradient(90deg, #06beb6, #48b1bf);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+.review{
+    font-size: 20px;
+    color: rgb(51, 114, 126);
+    padding-bottom: 10px;
+}
+
+.single-experience{
+    width: 25%;
+    float: left;
+    margin-left: 5%;
+    padding-left: 2%;
+    box-shadow: 10px 10px 40px grey;
+    border-radius: 5px;
+    height: 80%;
+    padding: 20px;
+    border-left: 7px solid;
+    border-image: linear-gradient(lightsalmon, tomato);
+    border-image-slice: 1;
+}
+.Bottom{
+    height: 500px;
+    background-color: rgb(243, 242, 242);
+    text-align: center;
+}
+#Latest{
+    background-color: lightgray;
+}
+#section3title{
+    text-align: center;
+}
+#hudai{
+    color: tomato;
+}
+.Bottom img{
+    width: 150px;
+    height: 150px;
+}
