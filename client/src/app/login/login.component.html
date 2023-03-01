@@ -1,0 +1,52 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right cardDesign">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Login as Therapist</h2>
+
+              <form [formGroup]="therapistForm" (submit)="onSubmit()">
+                
+  
+                <div class="form-outline mb-4">
+                  <input type="email" id="form3Example3" class="form-control" formControlName="email"/>
+                  <label class="form-label" for="form3Example3">Email</label>
+                </div>
+  
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4" class="form-control" formControlName="password"/>
+                  <label class="form-label" for="form3Example4">Password</label>
+                </div>
+  
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  Login
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="../../assets/login/re2.jpg" class="w-100 rounded-4 shadow-4"
+            alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
