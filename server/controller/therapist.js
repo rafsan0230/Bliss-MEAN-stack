@@ -5,6 +5,30 @@ const Therapist = require('./../models/therapist');
 const SECRET_KEY = process.env.SECRET_KEY || 'lalala this isnt secure';
 // REMOVE-END
 
+const create = async (req, res) => {
+  // REMOVE-START
+  const { email, password } = req.body;
+  const therapist = await Therapist.findOne({ email: email });
+  if (therapist)
+    return res
+      .status(409)
+      .send({ error: '409', message: 'Therapist already exists' });
+  try {
+    if (password === '') throw new Error();
+    const hash = await bcrypt.hash(password, 10);
+    const newTherapist = new Therapist({
+      ...req.body,
+      password: hash,
+    });
+    const { _id } = await newTherapist.save();
+    const accessToken = jwt.sign({ _id }, SECRET_KEY);
+    res.status(201).send({ accessToken });
+  } catch (error) {
+    res.status(400).send({ error, message: 'Could not create therapist' });
+  }
+  // REMOVE-END
+};
+
 const login = async (req, res) => {
   // REMOVE-START
   const { email, password } = req.body;
@@ -22,4 +46,15 @@ const login = async (req, res) => {
   // REMOVE-END
 };
 
-module.exports = { login };
+const getAll = async (req, res) => {
+  try {
+      const therapist = await Therapist.find();
+      res.status(201);
+      res.send(therapist);
+  }
+  catch (error) {
+      res.send(error);
+  }
+}
+
+module.exports = { login, create, getAll };

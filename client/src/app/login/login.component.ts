@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { AppService } from '../app.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthenticateService } from '../services/authenticate.service';
 
 
 @Component({
@@ -9,15 +12,54 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
- constructor(public fb: FormBuilder){}
+
+  // loginError = false;
+  // errorMessage = '';
+  // validDatas = false;
+
+ constructor(
+  public fb: FormBuilder,
+  // private authService: AuthenticateService,
+  private http: HttpClient,
+  // private router: Router
+  ){}
+
+ readonly baseURL = 'http://localhost:3001/login'
 
  therapistForm = this.fb.group({
   _id: [null],
-  email: [''],
-  password: ['']
+  email: ['', Validators.required],
+  password: ['', Validators.required]
 })
+
+postLogin(){
+  return this.http.post(this.baseURL, this.therapistForm.value)
+}
+
 onSubmit(){
-  console.log(this.therapistForm.value);
+  
+  if(this.therapistForm.valid) {
+    this.postLogin().subscribe((res) =>
+      localStorage.setItem('currentUserData', JSON.stringify(res))
+    );
+  }
+
+//   const { email, password } = this.therapistForm.value;
+//   if (email && password) {
+//     this.authService.loginTherapist({ email, password }).subscribe({
+//       next: (res) => {
+//         sessionStorage.setItem('accessToken', res.accessToken);
+//         this.postLogin().subscribe((res) =>
+//             localStorage.setItem('currentUserData', JSON.stringify(res))
+//           );
+//         //this.router.navigate(['landing-page']);
+//       },
+//       error: (err) => {
+//         this.errorMessage = err.error.message;
+//         this.loginError = true;
+//       },
+//     });
+//   }
 }
 
 }

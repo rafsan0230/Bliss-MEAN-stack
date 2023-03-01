@@ -1,20 +1,20 @@
 const mongoose = require('./../db');
 
-const TherapistSchema = mongoose.Schema({
-      name: {
+const PatientSchema = mongoose.Schema({
+      typeOfTherapy: {
         type: String
       },
       email: {
         type: String,
         required: true,
       },
-      password: {
+      age: {
         type: String,
         required: true,
       },
-      category: {
+      accidentHistory: {
         type: String
       }
 })
 
-module.exports = mongoose.model('Therapist', TherapistSchema);
+module.exports = mongoose.model('Patient', PatientSchema);
