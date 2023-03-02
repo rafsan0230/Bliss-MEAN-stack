@@ -79,17 +79,29 @@
           <table>
             <thead>
               <tr>
-                <th>Patient Name</th>
-                <th>age</th>
-                <th>Status</th>
-                <th>age</th>
-                <th>age</th>
+                <th>Patient email</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Type of Therapy</th>
+                <th>Relationship Status</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let patientData of patientDatas">
                 <td>
                   <p>{{patientData.email}}</p>
+                </td>
+                <td>
+                  <p>{{patientData.age}}</p>
+                </td>
+                <td>
+                  <p>{{patientData.gender}}</p>
+                </td>
+                <td>
+                  <p>{{patientData.typeOfTherapy}}</p>
+                </td>
+                <td>
+                  <p>{{patientData.relationStatus}}</p>
                 </td>
               </tr>
               
