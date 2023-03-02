@@ -2,10 +2,11 @@ const Patient = require('./../models/patient');
 
 
 const getPatients = async (req, res) => {
+  console.log("some");
   try {
-      const patient = await Patient.find();
-      res.status(201);
-      res.send(patient);
+    const patient = await Patient.find();
+    res.status(201);
+    res.send(patient);
   }
   catch (error) {
       res.send(error);
@@ -14,11 +15,10 @@ const getPatients = async (req, res) => {
 
 const postPatient = async (req, res,) => {
   console.log(req.body)
-  if (req.body.email && req.body.age) {
+  if (req.body.email && req.body.gender) {
     try {
-      console.log(req.body)
       const result = await Patient.create(req.body);
-      res.status(201)
+      res.status(201);
       res.send(result);
       return result;
     } catch (error) {

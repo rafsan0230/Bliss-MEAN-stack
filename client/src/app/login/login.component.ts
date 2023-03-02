@@ -13,15 +13,15 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class LoginComponent {
 
-  // loginError = false;
-  // errorMessage = '';
-  // validDatas = false;
+  loginError = false;
+  errorMessage = '';
+  validDatas = false;
 
  constructor(
   public fb: FormBuilder,
-  // private authService: AuthenticateService,
+  private authService: AuthenticateService,
   private http: HttpClient,
-  // private router: Router
+  private router: Router
   ){}
 
  readonly baseURL = 'http://localhost:3001/login'
@@ -37,29 +37,30 @@ postLogin(){
 }
 
 onSubmit(){
-  
-  if(this.therapistForm.valid) {
-    this.postLogin().subscribe((res) =>
-      localStorage.setItem('currentUserData', JSON.stringify(res))
-    );
-  }
 
-//   const { email, password } = this.therapistForm.value;
-//   if (email && password) {
-//     this.authService.loginTherapist({ email, password }).subscribe({
-//       next: (res) => {
-//         sessionStorage.setItem('accessToken', res.accessToken);
-//         this.postLogin().subscribe((res) =>
-//             localStorage.setItem('currentUserData', JSON.stringify(res))
-//           );
-//         //this.router.navigate(['landing-page']);
-//       },
-//       error: (err) => {
-//         this.errorMessage = err.error.message;
-//         this.loginError = true;
-//       },
-//     });
-//   }
+  // if(this.therapistForm.valid) {
+  //   this.postLogin().subscribe((res) =>
+  //     localStorage.setItem('currentUserData', JSON.stringify(res))
+  //   );
+  // }
+
+  const { email, password } = this.therapistForm.value;
+  if (email && password) {
+    console.log("entry")
+    this.authService.loginTherapist({ email, password }).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.postLogin().subscribe((res) =>
+            localStorage.setItem('currentUserData', JSON.stringify(res))
+          );
+        //this.router.navigate(['landing-page']);
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+        this.loginError = true;
+      },
+    });
+  }
 }
 
 }

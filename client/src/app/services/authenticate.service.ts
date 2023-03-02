@@ -8,7 +8,7 @@ import { Therapist } from '../model/therapist';
 })
 export class AuthenticateService {
 
-  readonly baseURL = 'http://localhost:3001/login'
+  readonly baseURL = 'http://localhost:3001'
   constructor(
     private http: HttpClient) { } 
 
@@ -16,6 +16,7 @@ export class AuthenticateService {
       email: string;
       password: string;
     }): Observable<{ accessToken: string }> {
+      console.log(therapist)
       return this.http.post<{ accessToken: string }>(
         `${this.baseURL}/login`,
         therapist

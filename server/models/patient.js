@@ -1,19 +1,23 @@
 const mongoose = require('./../db');
 
 const PatientSchema = mongoose.Schema({
-      typeOfTherapy: {
+      firstName: {
         type: String
+      },
+      lastName: {
+        type: String,
       },
       email: {
         type: String,
-        required: true,
       },
-      age: {
+      dob: {
         type: String,
-        required: true,
       },
-      accidentHistory: {
+      gender: {
         type: String
+      },
+      satisfaction: {
+        type: Number
       }
 })
 

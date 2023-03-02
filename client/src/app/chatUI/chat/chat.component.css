@@ -1,0 +1,69 @@
+.container {
+    padding-left: 5%;
+    background-color: antiquewhite;
+    border-left: 7px solid;
+    border-image: linear-gradient(lightsalmon, tomato);
+    border-image-slice: 1;
+    /* background-image: url("./../../../assets/logo-black.png"); */
+    height: 80vh;
+    margin-top: 10%;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5vh;
+  }
+  
+  .message-container {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .input-container {
+    padding: 10px;
+  }
+  
+  .message {
+    width: 100%;
+    display: flex;
+    margin: 10px 0px;
+    -webkit-animation: slidein-bottom 0.5s linear;
+    animation: slidein-bottom 0.5s linear;
+  }
+  
+  .bubble {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .user-message {
+    justify-content: flex-end;
+  }
+  
+  .user-message > .bubble {
+    background-color: rgb(52, 70, 238);
+    color: white;
+  }
+  
+  .system-message > .bubble {
+    background-color: white;
+  }
+  
+  .submit-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  @keyframes slidein-bottom {
+    0% {
+      margin-top: 30px;
+      margin-bottom: -10px;
+      opacity: 0;
+    }
+    90% {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
