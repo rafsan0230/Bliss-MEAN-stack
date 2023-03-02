@@ -26,29 +26,33 @@ export class ChatComponent implements OnInit, AfterViewInit {
   step: number = 0;
   messages: Message[] = [];
   questions: string[] = [
-    'What is your first name?',
-    'What is your last name?',
+    'What type of therapy are you looking for?',
+    'What is your gender identity?',
+    'How old are you?',
+    'What is your relationship status?',
     'What is your email address?',
-    'What is your date of birth?',
-    'What gender are you?',
-    'Please rate your level of satisfaction with our services.',
-    'Click submit to submit form.'
+    'How would you rate your current mental health condistion',
+    'Thanks for helping us to gather necessary information about you. Click submit to submit form.'
   ];
 
   genderOptions = ['Male', 'Female', 'Other'];
   typeOfTherapyOptions = ['Individual', "Couple", "For my child"];
   ageOptions = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50+'];
   relationStatusoption = ['Single', 'In a relationship', 'Married', 'Divorced', 'Widowed', 'Other'];
-  
+
 
 
   form = this.fb.group({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    dob: new FormControl('', [Validators.required]),
+    typeOfTherapy: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
-    satisfaction: new FormControl(0, Validators.required)
+    age: new FormControl('', Validators.required),
+    relationStatus: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    mentalHealthRate: new FormControl(0, Validators.required)
+    // firstName: new FormControl('', Validators.required),
+    // lastName: new FormControl('', Validators.required),
+    // dob: new FormControl('', [Validators.required]),
+    // satisfaction: new FormControl(0, Validators.required)
   })
 
   constructor (private fb: FormBuilder, private http: HttpClient) {}
@@ -64,7 +68,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   addMessage (content: string, user: boolean) {
     this.messages.push({content, user});
-    this.scrollToBottom();
+    setTimeout(()=>{
+      this.scrollToBottom();
+    },200)
   }
 
   handleNewInfo (info: any) {
@@ -80,11 +86,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   handleSubmit () {
-    if(this.form.valid) {
+    // if(this.form.valid) {
         this.postPatient().subscribe((res) =>
           localStorage.setItem('currentUserData', JSON.stringify(res))
         );
-      }
+      // }
   }
 
   scrollToBottom(): void {             

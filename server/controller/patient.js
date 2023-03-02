@@ -15,7 +15,7 @@ const getPatients = async (req, res) => {
 
 const postPatient = async (req, res,) => {
   console.log(req.body)
-  if (req.body.email && req.body.gender) {
+  if (req.body.email) {
     try {
       const result = await Patient.create(req.body);
       res.status(201);
@@ -25,7 +25,7 @@ const postPatient = async (req, res,) => {
       console.log(error);
     }
   }else{
-    res.status(400).send('Incorrect data');
+    res.status(400).send('Insufficient data');
   }
 }
 

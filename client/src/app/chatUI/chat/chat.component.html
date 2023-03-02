@@ -5,12 +5,15 @@
       </div>
     </div>
     <div class="input-container" >
-      <app-form-field *ngIf="step === 0" type="text" [control]="form.controls.firstName" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
-      <app-form-field *ngIf="step === 1" type="text" [control]="form.controls.lastName" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
-      <app-form-field *ngIf="step === 2" type="email" [control]="form.controls.email" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
-      <app-form-field *ngIf="step === 3" type="date" [control]="form.controls.dob" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
-      <app-form-field *ngIf="step === 4" type="select" [control]="form.controls.gender" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="genderOptions"></app-form-field>
-      <app-form-field *ngIf="step === 5" type="range" [control]="form.controls.satisfaction" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
+      <!-- <app-form-field *ngIf="step === 0" type="text" [control]="form.controls.firstName" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
+      <app-form-field *ngIf="step === 1" type="text" [control]="form.controls.lastName" (nextStepEvent)="handleNewInfo($event)"></app-form-field> -->
+      <!-- <app-form-field *ngIf="step === 3" type="date" [control]="form.controls.dob" (nextStepEvent)="handleNewInfo($event)"></app-form-field> -->
+      <app-form-field *ngIf="step === 0" type="select" [control]="form.controls.typeOfTherapy" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="typeOfTherapyOptions"></app-form-field>
+      <app-form-field *ngIf="step === 1" type="select" [control]="form.controls.gender" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="genderOptions"></app-form-field>
+      <app-form-field *ngIf="step === 2" type="select" [control]="form.controls.age" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="ageOptions"></app-form-field>
+      <app-form-field *ngIf="step === 3" type="select" [control]="form.controls.age" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="relationStatusoption"></app-form-field>
+      <app-form-field *ngIf="step === 4" type="email" [control]="form.controls.email" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
+      <app-form-field *ngIf="step === 5" type="range" [control]="form.controls.mentalHealthRate" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
       <div class="submit-container">
         <button *ngIf="step === 6" mat-raised-button color="accent" (click)="handleSubmit()">Submit</button>
       </div>

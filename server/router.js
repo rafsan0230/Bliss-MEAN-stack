@@ -11,7 +11,8 @@ router.post('/register', therapistController.create);
 router.get('/therapist', therapistController.getAll);
 
 
-router.get('/patient', authMiddleware, patientController.getPatients);
+// router.get('/patient', authMiddleware, patientController.getPatients);
+router.get('/patient', patientController.getPatients);
 router.post('/patient', patientController.postPatient);
 
 // REMOVE-END

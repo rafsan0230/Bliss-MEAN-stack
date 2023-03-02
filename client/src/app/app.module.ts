@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatUIComponent } from './chat-ui/chat-ui.component';
 import { ChatComponent } from './chatUI/chat/chat.component';
 import { FormFieldComponent } from './chatUI/form-field/form-field.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PatientInfoComponent } from './patient-info/patient-info.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FormFieldComponent } from './chatUI/form-field/form-field.component';
     LoginComponent,
     ChatUIComponent,
     ChatComponent,
-    FormFieldComponent
+    FormFieldComponent,
+    DashboardComponent,
+    PatientInfoComponent
   ],
   imports: [
     BrowserModule,
