@@ -161,6 +161,30 @@ const findChildPatientbyID = async (req, res) => {
       res.send(error);
   }
 }
+const findCouplePatientbyID = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const patient = await PatientCouple.findById(id);
+    console.log(patient)
+    res.status(201);
+    res.send(patient);
+  }
+  catch (error) {
+      res.send(error);
+  }
+}
+const findTraumaPatientbyID = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const patient = await PatientTrauma.findById(id);
+    console.log(patient)
+    res.status(201);
+    res.send(patient);
+  }
+  catch (error) {
+      res.send(error);
+  }
+}
 
 
-module.exports = { getPatients, postPatient, postTraumaPatient, postChildPatient, postCouplePatient, getTraumaPatients, getChildPatients, getCouplePatients, deleteTraumaPatient, deleteChildPatient, deleteCouplePatient};
+module.exports = { getPatients, postPatient, postTraumaPatient, postChildPatient, postCouplePatient, getTraumaPatients, getChildPatients, getCouplePatients, deleteTraumaPatient, deleteChildPatient, deleteCouplePatient, findChildPatientbyID, findCouplePatientbyID, findTraumaPatientbyID};

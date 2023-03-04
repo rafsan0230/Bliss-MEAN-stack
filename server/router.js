@@ -33,6 +33,11 @@ router.post("/acceptedTrauma", acceptedPatientController.postAcceptedTrauma);
 router.post("/acceptedChild", acceptedPatientController.postAcceptedChild);
 router.post("/acceptedCouple", acceptedPatientController.postAcceptedCouple);
 
+router.get("/patientTrauma/:id", patientController.findTraumaPatientbyID);
+router.get("/patientChild/:id", patientController.findChildPatientbyID);
+router.get("/patientCouple/:id", patientController.findCouplePatientbyID);
+
+
 
 
 
