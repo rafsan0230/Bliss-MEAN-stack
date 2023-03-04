@@ -37,7 +37,7 @@ const login = async (req, res) => {
     const validatedPass = await bcrypt.compare(password, therapist.password);
     if (!validatedPass) throw new Error();
     const accessToken = jwt.sign({ _id: therapist._id }, SECRET_KEY);
-    res.status(200).send({ accessToken });
+    res.status(200).send({ accessToken, therapist });
   } catch (error) {
     res
       .status(401)

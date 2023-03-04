@@ -22,6 +22,8 @@ import { ChatComponent } from './chatUI/chat/chat.component';
 import { FormFieldComponent } from './chatUI/form-field/form-field.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
+import { ThankyouComponent } from './thankyou/thankyou.component';
+import { AcceptedPatientComponent } from './accepted-patient/accepted-patient.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { PatientInfoComponent } from './patient-info/patient-info.component';
     ChatComponent,
     FormFieldComponent,
     DashboardComponent,
-    PatientInfoComponent
+    PatientInfoComponent,
+    ThankyouComponent,
+    AcceptedPatientComponent
   ],
   imports: [
     BrowserModule,

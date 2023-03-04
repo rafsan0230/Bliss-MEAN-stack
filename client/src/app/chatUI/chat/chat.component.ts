@@ -21,7 +21,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   private scrollContainer: any;
 
-  readonly baseURL = 'http://localhost:3001/patient'
+  readonly coupleURL = 'http://localhost:3001/patientCouple'
+  readonly childURL = 'http://localhost:3001/patientChild'
+  readonly traumaURL = 'http://localhost:3001/patientTrauma'
 
   step: number = 0;
   messages: Message[] = [];
@@ -30,6 +32,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     'What is your gender identity?',
     'How old are you?',
     'What is your relationship status?',
+    'Is there any traumatic experience that hurting you?',
     'What is your email address?',
     'How would you rate your current mental health condistion',
     'Thanks for helping us to gather necessary information about you. Click submit to submit form.'
@@ -39,6 +42,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   typeOfTherapyOptions = ['Individual', "Couple", "For my child"];
   ageOptions = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50+'];
   relationStatusoption = ['Single', 'In a relationship', 'Married', 'Divorced', 'Widowed', 'Other'];
+  yesnoOptions = ['Yes', 'No']
 
 
 
@@ -47,8 +51,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
     gender: new FormControl('', Validators.required),
     age: new FormControl('', Validators.required),
     relationStatus: new FormControl('', Validators.required),
+    traumaExperience: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    mentalHealthRate: new FormControl(0, Validators.required)
+    mentalHealthRate: new FormControl(0, Validators.required),
+    status: new FormControl('Pending', Validators.required)
     // firstName: new FormControl('', Validators.required),
     // lastName: new FormControl('', Validators.required),
     // dob: new FormControl('', [Validators.required]),
@@ -82,14 +88,26 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   postPatient(){
-    return this.http.post(this.baseURL, this.form.value)
+    if(this.form.controls.typeOfTherapy.value == "Couple") {
+      return this.http.post(this.coupleURL, this.form.value)
+    }
+    if(this.form.controls.typeOfTherapy.value == "For my child") {
+      return this.http.post(this.childURL, this.form.value)
+    }
+    if(this.form.controls.traumaExperience.value == "Yes") {
+      return this.http.post(this.traumaURL, this.form.value)
+    }
+    return undefined;
   }
 
   handleSubmit () {
     // if(this.form.valid) {
-        this.postPatient().subscribe((res) =>
+      const sending = this.postPatient()
+      if (sending){
+        sending.subscribe((res) =>
           localStorage.setItem('currentUserData', JSON.stringify(res))
         );
+      }
       // }
   }
 

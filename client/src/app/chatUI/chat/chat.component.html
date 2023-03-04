@@ -12,10 +12,11 @@
       <app-form-field *ngIf="step === 1" type="select" [control]="form.controls.gender" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="genderOptions"></app-form-field>
       <app-form-field *ngIf="step === 2" type="select" [control]="form.controls.age" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="ageOptions"></app-form-field>
       <app-form-field *ngIf="step === 3" type="select" [control]="form.controls.relationStatus" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="relationStatusoption"></app-form-field>
-      <app-form-field *ngIf="step === 4" type="email" [control]="form.controls.email" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
-      <app-form-field *ngIf="step === 5" type="range" [control]="form.controls.mentalHealthRate" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
+      <app-form-field *ngIf="step === 4" type="select" [control]="form.controls.traumaExperience" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="yesnoOptions"></app-form-field>
+      <app-form-field *ngIf="step === 5" type="email" [control]="form.controls.email" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
+      <app-form-field *ngIf="step === 6" type="range" [control]="form.controls.mentalHealthRate" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
       <div class="submit-container">
-        <button *ngIf="step === 6" mat-raised-button color="accent" (click)="handleSubmit()">Submit</button>
+        <button *ngIf="step === 7" mat-raised-button color="accent" (click)="handleSubmit()" routerLink="/thankyou">Submit</button>
       </div>
     </div>
   </div>

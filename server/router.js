@@ -1,19 +1,40 @@
-const router = require('express').Router();
-const therapistController = require('./controller/therapist');
-const patientController = require('./controller/patient');
-const authMiddleware = require('./middleware/therapist');
+const router = require("express").Router();
+const therapistController = require("./controller/therapist");
+const patientController = require("./controller/patient");
+const acceptedPatientController = require("./controller/acceptedPatient");
+const authMiddleware = require("./middleware/therapist");
+const PatientTrauma = require("./models/PatientTrauma");
 
 // add the paths for register, login, me, and logout here
 
 // REMOVE-START
-router.post('/login', therapistController.login);
-router.post('/register', therapistController.create);
-router.get('/therapist', therapistController.getAll);
-
+router.post("/login", therapistController.login);
+router.post("/register", therapistController.create);
+router.get("/therapist", therapistController.getAll);
 
 // router.get('/patient', authMiddleware, patientController.getPatients);
-router.get('/patient', patientController.getPatients);
-router.post('/patient', patientController.postPatient);
+router.get("/patient", patientController.getPatients);
+router.post("/patient", patientController.postPatient);
+
+router.get("/patientCouple", patientController.getCouplePatients);
+router.post("/patientCouple", patientController.postCouplePatient);
+
+router.get("/patientChild", patientController.getChildPatients);
+router.post("/patientChild", patientController.postChildPatient);
+
+router.get("/patientTrauma", patientController.getTraumaPatients);
+router.post("/patientTrauma", patientController.postTraumaPatient);
+
+router.delete("/patientTrauma/:id", patientController.deleteTraumaPatient);
+router.delete("/patientChild/:id", patientController.deleteChildPatient);
+router.delete("/patientCouple/:id", patientController.deleteCouplePatient);
+
+router.post("/acceptedTrauma", acceptedPatientController.postAcceptedTrauma);
+router.post("/acceptedChild", acceptedPatientController.postAcceptedChild);
+router.post("/acceptedCouple", acceptedPatientController.postAcceptedCouple);
+
+
+
 
 // REMOVE-END
 

@@ -12,6 +12,10 @@ const TherapistSchema = mongoose.Schema({
         type: String,
         required: true,
       },
+      licenseNo: {
+        type: String,
+        required: true,
+      },
       category: {
         type: String
       }

@@ -1,11 +1,12 @@
 <!-- SIDEBAR -->
 <section id="sidebar" [ngClass]="status ? 'hide' : ''">
-    <a href="#" class="brand">
+    <a routerLink="/" class="brand">
       <i class='bx bxs-smile'></i>
       <span class="text">Bliss</span>
     </a>
     <ul class="side-menu top">
-      <li class="active">
+      <!-- <li class={{routeName.includes('/') ? 'active' : ''}}> -->
+          <li class='active'>
         <a href="#">
           <i class='bx bxs-dashboard' ></i>
           <span class="text">Dashboard</span>
@@ -14,7 +15,7 @@
       <li>
         <a href="#">
           <i class='bx bxs-dashboard' ></i>
-          <span class="text">My Profile</span>
+          <span class="text">Accepted Patient</span>
         </a>
       </li>
       <li>
@@ -38,7 +39,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="logout">
+        <a routerLink="/" class="logout">
           <i class='bx bxs-log-out-circle' ></i>
           <span class="text">Logout</span>
         </a>
@@ -60,11 +61,11 @@
           <h1>Therapist's Dashboard</h1>
           <ul class="breadcrumb">
             <li>
-              <a href="#">Home</a>
+              <a class="active" routerLink="/">Home</a>
             </li>
             <li><i class='bx bx-chevron-right' ></i></li>
             <li>
-              <a class="active" href="#">Dashboard</a>
+              <a>Dashboard</a>
             </li>
           </ul>
         </div>
@@ -79,17 +80,17 @@
           <table>
             <thead>
               <tr>
-                <th>Patient email</th>
+                <th>Therapy Type</th>
                 <th>Age</th>
                 <th>Gender</th>
-                <th>Type of Therapy</th>
+                <th>Traumatized</th>
                 <th>Relationship Status</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let patientData of patientDatas">
                 <td>
-                  <p>{{patientData.email}}</p>
+                  <p>{{patientData.typeOfTherapy}}</p>
                 </td>
                 <td>
                   <p>{{patientData.age}}</p>
@@ -98,10 +99,16 @@
                   <p>{{patientData.gender}}</p>
                 </td>
                 <td>
-                  <p>{{patientData.typeOfTherapy}}</p>
+                  <p>{{patientData.traumaExperience}}</p>
                 </td>
                 <td>
                   <p>{{patientData.relationStatus}}</p>
+                </td>
+                <td>
+                  <a class="link-button" target="_blank"  (click)="onAccept(patientData._id)">Accept</a>
+                </td>
+                <td>
+                  <a class="link-button-del" target="_blank" (click)="onDelete(patientData._id)">Delete</a>
                 </td>
               </tr>
               

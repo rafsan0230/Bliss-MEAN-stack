@@ -13,6 +13,9 @@ const PatientSchema = mongoose.Schema({
       relationStatus: {
         type: String
       },
+      traumaExperience: {
+        type: String
+      },
       email: {
         type: String,
       },
