@@ -1,10 +1,14 @@
 .container {
+    /* overflow: hidden; */
     padding-left: 5%;
-    background-color: antiquewhite;
-    border-left: 7px solid;
+    background-color: transparent;
+    /* border-left: 7px solid;
     border-image: linear-gradient(lightsalmon, tomato);
-    border-image-slice: 1;
-    /* background-image: url("./../../../assets/logo-black.png"); */
+    border-image-slice: 1; */
+    background-image: url("./../../../assets/logo-no-backgroundup.png");
+  
+    background-repeat: no-repeat;
+  
     height: 80vh;
     margin-top: 10%;
     width: 40vw;
@@ -14,8 +18,14 @@
   }
   
   .message-container {
-    flex-grow: 1;
-    overflow-y: auto;
+      /* overflow: hidden; */
+      padding-left: 2%;
+      padding-bottom: 2%;
+      flex-grow: 1;
+      display: flex;
+      overflow-y: auto;
+      flex-direction: column;
+      justify-content: flex-end;
   }
   
   .input-container {
@@ -26,7 +36,7 @@
     width: 100%;
     display: flex;
     margin: 10px 0px;
-    -webkit-animation: slidein-bottom 0.5s linear;
+    -webkit-animation: slidein-bottom 0.5s linear; 
     animation: slidein-bottom 0.5s linear;
   }
   
@@ -35,17 +45,24 @@
     border-radius: 10px;
   }
   
+  .avatar{
+    height: 40px;
+    width: 40px;
+    margin-right: 6px;
+  }
+  
   .user-message {
+    padding-right: 10%;
     justify-content: flex-end;
   }
   
   .user-message > .bubble {
-    background-color: rgb(52, 70, 238);
+    background-color: rgb(41, 89, 134);
     color: white;
   }
   
   .system-message > .bubble {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
   }
   
   .submit-container {
@@ -55,13 +72,13 @@
   
   @keyframes slidein-bottom {
     0% {
-      margin-top: 30px;
-      margin-bottom: -10px;
+      margin-bottom: 30px;
+      margin-top: -10px;
       opacity: 0;
     }
     90% {
-      margin-top: 10px;
       margin-bottom: 10px;
+      margin-top: 10px;
     }
     100% {
       opacity: 1;

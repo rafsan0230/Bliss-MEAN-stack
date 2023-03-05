@@ -52,3 +52,13 @@
     color: rgb(11, 46, 87);
     margin-top: 10px;
 }
+
+.hero{
+    font-size: xx-large;
+    font-weight: bold;
+}
+.slogan{
+    font-size: x-large;
+    font-weight: lighter;
+}
+

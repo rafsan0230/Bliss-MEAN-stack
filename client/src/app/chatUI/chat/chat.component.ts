@@ -68,6 +68,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.addMessage(this.questions[this.step], false);
   }
 
+  
+
   ngOnInit(): void {
   }
 
