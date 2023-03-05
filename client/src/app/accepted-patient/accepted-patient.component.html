@@ -11,30 +11,18 @@
           <span class="text">Dashboard</span>
         </a>
       </li>
-      <li>
-        <a class='active'>
+      <li class='active'>
+        <a>
           <i class='bx bxs-dashboard' ></i>
           <span class="text">Accepted Patient</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bxs-doughnut-chart' ></i>
-          <span class="text">Contact info</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bxs-message-dots' ></i>
-          <span class="text">Take a note</span>
         </a>
       </li>
     </ul>
     <ul class="side-menu">
       <li>
         <a href="#">
-          <i class='bx bxs-cog' ></i>
-          <span class="text">Settings</span>
+          <i class='bx bxs-message-dots' ></i>
+          <span class="text">Notes</span>
         </a>
       </li>
       <li>
@@ -79,6 +67,7 @@
           <table>
             <thead>
               <tr>
+                <th>Email</th>
                 <th>Therapy Type</th>
                 <th>Age</th>
                 <th>Gender</th>
@@ -88,6 +77,9 @@
             </thead>
             <tbody>
               <tr *ngFor="let patientData of patientDatas">
+                <td>
+                  <p>{{patientData.email}}</p>
+                </td>
                 <td>
                   <p>{{patientData.typeOfTherapy}}</p>
                 </td>

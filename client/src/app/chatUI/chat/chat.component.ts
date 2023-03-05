@@ -86,13 +86,16 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }, 500);
   }
 
-  postPatient(){
+  postPatientType(){
     if(this.form.controls.typeOfTherapy.value == "Couple") {
       return this.http.post(this.coupleURL, this.form.value)
     }
     if(this.form.controls.typeOfTherapy.value == "For my child") {
       return this.http.post(this.childURL, this.form.value)
     }
+    return undefined;
+  }
+  postPatientTrauma(){
     if(this.form.controls.traumaExperience.value == "Yes") {
       return this.http.post(this.traumaURL, this.form.value)
     }
@@ -101,12 +104,20 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   handleSubmit () {
     // if(this.form.valid) {
-      const sending = this.postPatient()
-      if (sending){
-        sending.subscribe((res) =>
+      const sendingType = this.postPatientType()
+      if (sendingType){
+        sendingType.subscribe((res) =>
           localStorage.setItem('currentUserData', JSON.stringify(res))
         );
       }
+      const sendingTrauma = this.postPatientTrauma()
+      if (sendingTrauma){
+        sendingTrauma.subscribe((res) =>
+          localStorage.setItem('currentUserData', JSON.stringify(res))
+        );
+      }
+      
+
       // }
   }
 

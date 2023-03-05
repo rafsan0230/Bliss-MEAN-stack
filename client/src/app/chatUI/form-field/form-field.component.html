@@ -2,7 +2,7 @@
 
     <mat-form-field appearance="fill" *ngIf="type === 'text' || type === 'email'">
       <input matInput [type]="type" [formControl]="control" />
-      <mat-error *ngIf="control.errors">Invalid input</mat-error>
+      <mat-error *ngIf="control.errors">Invalid Email</mat-error>
     </mat-form-field>
   
     <div *ngIf="type === 'range'" class="form-input">

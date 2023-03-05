@@ -19,7 +19,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <!-- <a href="#">
           <i class='bx bxs-doughnut-chart' ></i>
           <span class="text">Contact info</span>
         </a>
@@ -29,15 +29,15 @@
           <i class='bx bxs-message-dots' ></i>
           <span class="text">Take a note</span>
         </a>
-      </li>
+      </li> -->
     </ul>
     <ul class="side-menu">
-      <li>
+      <!-- <li>
         <a href="#">
           <i class='bx bxs-cog' ></i>
           <span class="text">Settings</span>
         </a>
-      </li>
+      </li> -->
       <li>
         <a routerLink="/" class="logout">
           <i class='bx bxs-log-out-circle' ></i>
@@ -80,15 +80,19 @@
           <table>
             <thead>
               <tr>
+                <th>Email</th>
                 <th>Therapy Type</th>
                 <th>Age</th>
                 <th>Gender</th>
                 <th>Traumatized</th>
-                <th>Relationship Status</th>
+                <!-- <th>Relationship Status</th> -->
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let patientData of patientDatas">
+                <td>
+                  <p>{{patientData.email}}</p>
+                </td>
                 <td>
                   <p>{{patientData.typeOfTherapy}}</p>
                 </td>
@@ -101,9 +105,9 @@
                 <td>
                   <p>{{patientData.traumaExperience}}</p>
                 </td>
-                <td>
+                <!-- <td>
                   <p>{{patientData.relationStatus}}</p>
-                </td>
+                </td> -->
                 <td>
                   <a class="link-button" target="_blank"  (click)="onAccept(patientData._id)">Accept</a>
                 </td>
@@ -111,7 +115,6 @@
                   <a class="link-button-del" target="_blank" (click)="onDelete(patientData._id)">Delete</a>
                 </td>
               </tr>
-              
             </tbody>
           </table>
         </div>
