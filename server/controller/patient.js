@@ -5,16 +5,16 @@ const PatientTrauma = require('./../models/PatientTrauma');
 
 
 
-const getPatients = async (req, res) => {
-  try {
-    const patient = await Patient.find();
-    res.status(201);
-    res.send(patient);
-  }
-  catch (error) {
-      res.send(error);
-  }
-}
+// const getPatients = async (req, res) => {
+//   try {
+//     const patient = await Patient.find();
+//     res.status(201);
+//     res.send(patient);
+//   }
+//   catch (error) {
+//       res.send(error);
+//   }
+// }
 const getCouplePatients = async (req, res) => {
   try {
     const patientCouple = await PatientCouple.find();
@@ -49,21 +49,21 @@ const getTraumaPatients = async (req, res) => {
 
 
 
-const postPatient = async (req, res,) => {
-  if (req.body.email) {
-    try {
-      const result = await Patient.create(req.body);
-      console.log(req.body)
-      res.status(201);
-      res.send(result);
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
-  }else{
-    res.status(400).send('Insufficient data');
-  }
-}
+// const postPatient = async (req, res,) => {
+//   if (req.body.email) {
+//     try {
+//       const result = await Patient.create(req.body);
+//       console.log(req.body)
+//       res.status(201);
+//       res.send(result);
+//       return result;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }else{
+//     res.status(400).send('Insufficient data');
+//   }
+// }
 const postCouplePatient = async (req, res,) => {
   if (req.body.email) {
     try {
@@ -187,4 +187,4 @@ const findTraumaPatientbyID = async (req, res) => {
 }
 
 
-module.exports = { getPatients, postPatient, postTraumaPatient, postChildPatient, postCouplePatient, getTraumaPatients, getChildPatients, getCouplePatients, deleteTraumaPatient, deleteChildPatient, deleteCouplePatient, findChildPatientbyID, findCouplePatientbyID, findTraumaPatientbyID};
+module.exports = { postTraumaPatient, postChildPatient, postCouplePatient, getTraumaPatients, getChildPatients, getCouplePatients, deleteTraumaPatient, deleteChildPatient, deleteCouplePatient, findChildPatientbyID, findCouplePatientbyID, findTraumaPatientbyID};

@@ -10,8 +10,8 @@ router.post("/login", therapistController.login);
 router.post("/register", therapistController.create);
 router.get("/therapist", therapistController.getAll);
 
-router.get("/patient", patientController.getPatients);
-router.post("/patient", patientController.postPatient);
+// router.get("/patient", patientController.getPatients);
+// router.post("/patient", patientController.postPatient);
 
 router.get("/patientCouple", patientController.getCouplePatients);
 router.post("/patientCouple", patientController.postCouplePatient);
