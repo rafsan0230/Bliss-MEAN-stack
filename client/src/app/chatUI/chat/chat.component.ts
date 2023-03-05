@@ -54,7 +54,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     traumaExperience: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     mentalHealthRate: new FormControl(0, Validators.required),
-    status: new FormControl('Pending', Validators.required)
     // firstName: new FormControl('', Validators.required),
     // lastName: new FormControl('', Validators.required),
     // dob: new FormControl('', [Validators.required]),

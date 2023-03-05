@@ -5,15 +5,14 @@
       <span class="text">Bliss</span>
     </a>
     <ul class="side-menu top">
-      <!-- <li class={{routeName.includes('/') ? 'active' : ''}}> -->
-          <li class='active'>
-        <a href="#">
+      <li>
+        <a routerLink="/dashboard">
           <i class='bx bxs-dashboard' ></i>
           <span class="text">Dashboard</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a class='active'>
           <i class='bx bxs-dashboard' ></i>
           <span class="text">Accepted Patient</span>
         </a>
@@ -61,7 +60,7 @@
           <h1>Therapist's Dashboard</h1>
           <ul class="breadcrumb">
             <li>
-              <a href="#">Home</a>
+              <a routerLink="/">Home</a>
             </li>
             <li><i class='bx bx-chevron-right' ></i></li>
             <li>
@@ -104,16 +103,7 @@
                 <td>
                   <p>{{patientData.relationStatus}}</p>
                 </td>
-                <!-- <td>
-                  <a class="link-button" target="_blank"  (click)="onDelete(patientData._id)">Accept</a>
-                </td>
-                <td>
-                  <a class="link-button-del" target="_blank" (click)="onDelete(patientData._id)">Delete</a>
-                </td> -->
-                
-
               </tr>
-              
             </tbody>
           </table>
         </div>
