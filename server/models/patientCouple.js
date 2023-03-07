@@ -42,6 +42,9 @@ const PatientCoupleSchema = mongoose.Schema({
   },
   therapyExpreience: {
     type: String
+  },
+  pres: {
+    type: String
   }
 })
 

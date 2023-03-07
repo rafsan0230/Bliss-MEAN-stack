@@ -3,6 +3,8 @@ const AcceptedChild = require('./../models/acceptedChild');
 const AcceptedTrauma = require('./../models/acceptedtrauma');
 const transport = require('./../middleware/nodemailer');
 const {getMailOptions} = require('./../MailOptions/acceptedMail');
+const PatientTrauma = require('../models/PatientTrauma');
+const { findById } = require('./../models/acceptedCouple');
 
 const getAcceptedCouple = async (req, res) => {
   try {
@@ -40,11 +42,11 @@ const getAcceptedTrauma = async (req, res) => {
 const postAcceptedCouple = async (req, res,) => {
     if (req.body.email) {
       try {
-        const result = await AcceptedCouple.create(req.body);
+        const result = await AcceptedCouple.create(req.body.data);
         //console.log(getMailOptions(req.body.email))
-        transport(getMailOptions(req.body.email));
+        transport(getMailOptions(req.body.data.email));
 
-        console.log(req.body)
+        console.log(req.body.data)
         
         res.status(201);
         res.send(result);
@@ -75,15 +77,24 @@ const postAcceptedCouple = async (req, res,) => {
     }
   }
   const postAcceptedTrauma = async (req, res,) => {
-    console.log(req.body)
+    console.log("from controller",req.body)
+    const id = req.body._id
+    const filter= {_id : id}
+    const update = {$set: {pres : req.body.pres}}
+
+    const patient = await PatientTrauma.findOneAndUpdate(filter, update, {
+      new:true
+    })
+   
+
+
     if (req.body.email) {
       try {
-        const result = await AcceptedTrauma.create(req.body);
+        // const result = await AcceptedTrauma.create(req.body);
         transport(getMailOptions(req.body.email));
-        console.log(req.body)
+        // console.log(req.body.data)
         res.status(201);
-        res.send(result);
-        return result;
+        res.send(patient);
       } catch (error) {
         console.log(error);
       }

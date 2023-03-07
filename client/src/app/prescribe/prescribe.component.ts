@@ -11,6 +11,7 @@ export class PrescribeComponent {
 
   patientData!: any;
   tempPatientDatas!: any;
+  prescription = '';
 
   constructor(private http: HttpClient,private router: Router, private route: ActivatedRoute) {}
 
@@ -83,12 +84,13 @@ export class PrescribeComponent {
   readonly acceptChildURL = 'http://localhost:3001/acceptedChild';
   readonly acceptTraumaURL = 'http://localhost:3001/acceptedTrauma';
 
-  onAccept(_id: string) {
+  onAccept(_id: string, val:string) {
+    this.prescription = val;
     if (this.therapist.category === 'couple') {
       this.http.get(this.coupleURL + '/' + _id).subscribe((response) => {
         this.tempPatientDatas = response;
         this.http
-          .post(this.acceptCoupleURL, this.tempPatientDatas)
+          .post(this.acceptCoupleURL, {...this.tempPatientDatas, pres : this.prescription})
           .subscribe((response) => {
             console.log(response);
             this.router.navigate(['dashboard']);
@@ -100,10 +102,10 @@ export class PrescribeComponent {
       this.http.get(this.childURL + '/' + _id).subscribe((response) => {
         this.tempPatientDatas = response;
         this.http
-          .post(this.acceptChildURL, this.tempPatientDatas)
+          .post(this.acceptChildURL, {...this.tempPatientDatas, pres : this.prescription})
           .subscribe((response) => {
             console.log(response);
-            // this.tempPatientDatas = response;
+            this.router.navigate(['dashboard']);
           });
       });
     }
@@ -111,10 +113,10 @@ export class PrescribeComponent {
       this.http.get(this.traumaURL + '/' + _id).subscribe((response) => {
         this.tempPatientDatas = response;
         this.http
-          .post(this.acceptTraumaURL, this.tempPatientDatas)
+          .post(this.acceptTraumaURL, {...this.tempPatientDatas, pres : this.prescription} )
           .subscribe((response) => {
             console.log(response);
-            // this.tempPatientDatas = response;
+            this.router.navigate(['dashboard']);
           });
       });
     }

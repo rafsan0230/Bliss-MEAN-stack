@@ -42,8 +42,10 @@ const PatientSchema = mongoose.Schema({
       },
       therapyExpreience: {
         type: String
+      },
+      pres: {
+        type: String
       }
-      
 })
 
 module.exports = mongoose.model('Patient', PatientSchema);

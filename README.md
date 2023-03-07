@@ -1,2 +1,2 @@
 # Therapy-MEAN-
-pass - ughyfnlocayzmqtz
+The application is taking input from the users and then filtered therapists can see the inputs that the users have given.The patient make an appointment through calendly and Therapists can see full information while giving the therapy session. After session, some important information which will be needed for the patient will be sent to the users through email.

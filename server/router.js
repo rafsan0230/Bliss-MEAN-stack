@@ -27,6 +27,7 @@ router.delete("/patientChild/:id", patientController.deleteChildPatient);
 router.delete("/patientCouple/:id", patientController.deleteCouplePatient);
 
 router.post("/acceptedTrauma", acceptedPatientController.postAcceptedTrauma);
+router.put("/acceptedTrauma", acceptedPatientController.postAcceptedTrauma);
 router.get("/acceptedTrauma", acceptedPatientController.getAcceptedTrauma);
 
 router.post("/acceptedChild", acceptedPatientController.postAcceptedChild);

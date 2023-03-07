@@ -42,6 +42,9 @@ const PatientTraumaSchema = mongoose.Schema({
   },
   therapyExpreience: {
     type: String
+  },
+  pres: {
+    type: String
   }
 })
 

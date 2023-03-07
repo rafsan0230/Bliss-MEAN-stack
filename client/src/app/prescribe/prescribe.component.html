@@ -138,13 +138,13 @@
                   src="./../../assets/logo-black-modified.png" alt="avatar" width="40"
                   height="40" />
                 <div class="form-outline w-100">
-                  <textarea class="form-control" id="textAreaExample" rows="4"
+                  <textarea class="form-control" id="textAreaExample" #box rows="4"
                     style="background: #fff;"></textarea>
                   <label class="form-label" for="textAreaExample">Prescription</label>
                 </div>
               </div>
               <div class="float-end mt-2 pt-1">
-                <button type="button" class="btn btn-primary btn-sm mx-2" (click)="onAccept(patientData._id)">
+                <button type="button" class="btn btn-primary btn-sm mx-2" (click)="onAccept(patientData._id, box.value)">
                   Send Prescription
                 </button>
                 <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/dashboard">
