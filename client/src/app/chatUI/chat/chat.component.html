@@ -4,9 +4,8 @@
         <!-- <img class="avatar" src="../../../assets/logo-black-modified.png" alt=""> -->
         <div class="bubble">{{message.content}}</div>
       </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/nafizfuad0230" style="min-width:320px;height:500px;"></div>
     </div>
-    <div class="input-container" >
+    <div class="input-container">
       <!-- <app-form-field *ngIf="step === 0" type="text" [control]="form.controls.firstName" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
       <app-form-field *ngIf="step === 1" type="text" [control]="form.controls.lastName" (nextStepEvent)="handleNewInfo($event)"></app-form-field> -->
       <!-- <app-form-field *ngIf="step === 3" type="date" [control]="form.controls.dob" (nextStepEvent)="handleNewInfo($event)"></app-form-field> -->
@@ -24,9 +23,13 @@
       <app-form-field *ngIf="step === 11" type="select" [control]="form.controls.language" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="preferredLanguage"></app-form-field>
       <app-form-field *ngIf="step === 12" type="select" [control]="form.controls.sleepCondition" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="sleeping"></app-form-field>
       <app-form-field *ngIf="step === 13" type="email" [control]="form.controls.email" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
-     
+        
+
       <div class="submit-container">
-        <button *ngIf="step === 14" mat-raised-button color="accent" (click)="handleSubmit()" routerLink="/thankyou">Submit</button>
+        <button *ngIf="step === 14" mat-raised-button color="accent" (click)="handleCalendly()">Open calendly.</button>
+      </div>
+      <div class="submit-container">
+        <button *ngIf="step === 15" mat-raised-button color="accent" (click)="handleSubmit()">Submit</button>
       </div>
     </div>
   </div>

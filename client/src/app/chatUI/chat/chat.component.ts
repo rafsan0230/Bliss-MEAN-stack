@@ -1,7 +1,8 @@
-import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+export {}; declare global { interface Window { Calendly: any; } }
 
 interface Message {
   content: string,
@@ -18,6 +19,18 @@ interface Message {
 
 export class ChatComponent implements OnInit, AfterViewInit {
   @ViewChild('scrollMe', {static: false}) scrollFrame: ElementRef | undefined;
+  @HostListener('window:message', ['$event'])
+  
+  onEvent(ev: any) {
+    if (ev.data.event === 'calendly.event_scheduled') {
+      console.log('Scheduled done');
+      console.log(ev.data.payload);
+      window.Calendly.closePopupWidget();
+      this.step++;
+      this.addMessage(this.questions[this.step], false);
+    }
+  }
+  constructor (private fb: FormBuilder, private http: HttpClient, private router : Router) {}
 
   private scrollContainer: any;
 
@@ -43,6 +56,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     'What is your preferred language?',
     'What is your current sleeping condition?',
     'What is your email address?',
+    'Schedule appointment:',
     'Thanks for helping us to gather necessary information about you. Click submit to submit form.'
   ];
 
@@ -79,7 +93,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // satisfaction: new FormControl(0, Validators.required)
   })
 
-  constructor (private fb: FormBuilder, private http: HttpClient) {}
 
 
   ngAfterViewInit(): void {
@@ -137,6 +150,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
           localStorage.setItem('currentUserData', JSON.stringify(res))
         );
       }
+      
+      this.router.navigate(['/thankyou'])
   }
 
   scrollToBottom(): void {             
@@ -146,5 +161,21 @@ export class ChatComponent implements OnInit, AfterViewInit {
       left: 0,
       behavior: 'smooth'
     });
+  }
+
+  handleCalendly(){
+    if(this.form.controls.typeOfTherapy.value == "Couple"){
+      if(this.form.controls.traumaExperience.value == "Yes"){
+        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+      }
+      window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+    }
+    if(this.form.controls.typeOfTherapy.value == "For my child"){
+      if(this.form.controls.traumaExperience.value == "Yes"){
+        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+      }
+      window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+    }
+
   }
 }
