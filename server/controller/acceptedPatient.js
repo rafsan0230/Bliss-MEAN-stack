@@ -45,6 +45,7 @@ const postAcceptedCouple = async (req, res,) => {
         transport(getMailOptions(req.body.email));
 
         console.log(req.body)
+        
         res.status(201);
         res.send(result);
         return result;

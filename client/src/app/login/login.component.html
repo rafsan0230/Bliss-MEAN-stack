@@ -1,4 +1,3 @@
-<!-- Section: Design Block -->
 <section class="text-center text-lg-start">
     <style>
       .cascading-right {
@@ -21,6 +20,7 @@
               <h2 class="fw-bold mb-5">Login as Therapist</h2>
 
               <form [formGroup]="therapistForm" (submit)="onSubmit()">
+              <mat-error *ngIf="loginError">{{ errorMessage }}</mat-error>
                 
   
                 <div class="form-outline mb-4">

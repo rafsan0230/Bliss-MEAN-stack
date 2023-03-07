@@ -32,9 +32,17 @@ export class ChatComponent implements OnInit, AfterViewInit {
     'What is your gender identity?',
     'How old are you?',
     'What is your relationship status?',
-    'Is there any traumatic experience that hurting you?',
+    'Is there any traumatic experience that hurting the patient?',
+    'How would you rate your current mental health condition',
+    'How would you rate your current physical health?',
+    'Are there any specific preference for your therapist?',
+    'Have you ever been in therapy before?',
+
+    'How would you rate your current finacial status?',
+    'Your current eating habit: ',
+    'What is your preferred language?',
+    'What is your current sleeping condition?',
     'What is your email address?',
-    'How would you rate your current mental health condistion',
     'Thanks for helping us to gather necessary information about you. Click submit to submit form.'
   ];
 
@@ -43,10 +51,20 @@ export class ChatComponent implements OnInit, AfterViewInit {
   ageOptions = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50+'];
   relationStatusoption = ['Single', 'In a relationship', 'Married', 'Divorced', 'Widowed', 'Other'];
   yesnoOptions = ['Yes', 'No']
+  preferredTherapist = ['I prefer male therapist', 'I prefer female therpaist', 'I prefer an older therapist', 'I prefer a non-religious therapist']
+  goodPooroptions = ['Good', 'Fair', 'Poor']
+  preferredLanguage = ['English', 'Bangla']
+  sleeping = ['Trouble falling asleep', 'Sleeping too much', 'Well enough sleep cicle']
 
 
 
   form = this.fb.group({
+    sleepCondition: new FormControl('', Validators.required),
+    language: new FormControl('', Validators.required),
+    eatingHabit: new FormControl('', Validators.required),
+    financialState: new FormControl('', Validators.required),
+    therapistPreference: new FormControl('', Validators.required),
+    physicalHealth: new FormControl('', Validators.required),
     typeOfTherapy: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
     age: new FormControl('', Validators.required),
@@ -54,6 +72,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     traumaExperience: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     mentalHealthRate: new FormControl(0, Validators.required),
+    therapyExpreience: new FormControl('', Validators.required),
     // firstName: new FormControl('', Validators.required),
     // lastName: new FormControl('', Validators.required),
     // dob: new FormControl('', [Validators.required]),
@@ -118,9 +137,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
           localStorage.setItem('currentUserData', JSON.stringify(res))
         );
       }
-      
-
-      // }
   }
 
   scrollToBottom(): void {             

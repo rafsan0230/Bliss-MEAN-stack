@@ -6,6 +6,7 @@ import { ChatUIComponent } from './chat-ui/chat-ui.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { AcceptedPatientComponent } from './accepted-patient/accepted-patient.component';
+import { PrescribeComponent } from './prescribe/prescribe.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: 'chat', component: ChatUIComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'thankyou', component: ThankyouComponent},
-  { path: 'accepted', component: AcceptedPatientComponent}
+  { path: 'accepted', component: AcceptedPatientComponent},
+  { path: 'details/:id', component: PrescribeComponent}
+
 ];
 
 @NgModule({

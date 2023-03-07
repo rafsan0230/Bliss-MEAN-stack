@@ -15,7 +15,7 @@
       <li>
         <a routerLink="/accepted">
           <i class='bx bxs-dashboard' ></i>
-          <span class="text">Accepted Patient</span>
+          <span class="text">Consulted Patient</span>
         </a>
       </li>
       <li>
@@ -80,11 +80,8 @@
           <table>
             <thead>
               <tr>
-                <th>Email</th>
+                <th>Patient's Email</th>
                 <th>Therapy Type</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Traumatized</th>
                 <!-- <th>Relationship Status</th> -->
               </tr>
             </thead>
@@ -96,23 +93,15 @@
                 <td>
                   <p>{{patientData.typeOfTherapy}}</p>
                 </td>
-                <td>
-                  <p>{{patientData.age}}</p>
-                </td>
-                <td>
-                  <p>{{patientData.gender}}</p>
-                </td>
-                <td>
-                  <p>{{patientData.traumaExperience}}</p>
-                </td>
+
                 <!-- <td>
                   <p>{{patientData.relationStatus}}</p>
                 </td> -->
                 <td>
-                  <a class="link-button" target="_blank"  (click)="onAccept(patientData._id)">Accept</a>
+                  <a class="link-button" target="_blank"  (click)="onAccept(patientData._id)">View Details</a>
                 </td>
                 <td>
-                  <a class="link-button-del" target="_blank" (click)="onDelete(patientData._id)">Delete</a>
+                  <a class="link-button-del" target="_blank" (click)="onDelete(patientData._id)">Absent</a>
                 </td>
               </tr>
             </tbody>
@@ -122,3 +111,60 @@
     </main>
     <!-- MAIN -->
   </section>
+
+  <!--Modal: modalDiscount-->
+  <div class="modal fade right" id="modalDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading">Discount offer:
+          <strong>10% off</strong>
+        </p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-3">
+            <p></p>
+            <p class="text-center">
+              <i class="fas fa-gift fa-4x"></i>
+            </p>
+          </div>
+
+          <div class="col-9">
+            <p>Sharing is caring. Therefore, from time to time we like to give our visitors small gifts. Today is
+              one of those days.</p>
+            <p>
+              <strong>Copy the following code and use it at the checkout. It's valid for
+                <u>one day</u>.</strong>
+            </p>
+            <h2>
+              <span class="badge">v52gs1</span>
+            </h2>
+
+          </div>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a href="https://mdbootstrap.com/docs/standard/pro/" class="btn btn-danger">Get it
+          now
+          <i class="far fa-gem ml-1 white-text"></i>
+        </a>
+        <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No, thanks</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: modalDiscount-->

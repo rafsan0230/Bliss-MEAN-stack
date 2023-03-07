@@ -1,12 +1,11 @@
 .container {
-    /* overflow: hidden; */
     padding-left: 5%;
     background-color: transparent;
     /* border-left: 7px solid;
     border-image: linear-gradient(lightsalmon, tomato);
     border-image-slice: 1; */
     background-image: url("./../../../assets/logo-no-backgroundup.png");
-  
+    background-position: center;
     background-repeat: no-repeat;
   
     height: 80vh;
@@ -18,7 +17,6 @@
   }
   
   .message-container {
-      /* overflow: hidden; */
       padding-left: 2%;
       padding-bottom: 2%;
       flex-grow: 1;

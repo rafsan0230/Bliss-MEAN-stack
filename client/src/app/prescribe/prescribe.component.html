@@ -1,0 +1,159 @@
+<section style="background-color: #eee;">
+    <div class="container my-5 py-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h1>Patient Information</h1>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.email}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Type of Therapy</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.typeOfTherapy}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Gender</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.gender}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Age</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.age}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Relationship Status</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.relationStatus}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Trauma Experience</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.traumaExperience}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Mental Health-rate</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.mentalHealthRate}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Sleeping Condition</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.sleepCondition}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Financial State</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.financialState}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Therapist Preference</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.therapistPreference}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Physical health</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.physicalHealth}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Healthy Eating Habit</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.eatingHabit}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Preferred Language</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.language}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Previous Therapy Experience</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{patientData.therapyExpreience}}</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+              <div class="d-flex flex-start w-100">
+                <img class="rounded-circle shadow-1-strong me-3"
+                  src="./../../assets/logo-black-modified.png" alt="avatar" width="40"
+                  height="40" />
+                <div class="form-outline w-100">
+                  <textarea class="form-control" id="textAreaExample" rows="4"
+                    style="background: #fff;"></textarea>
+                  <label class="form-label" for="textAreaExample">Prescription</label>
+                </div>
+              </div>
+              <div class="float-end mt-2 pt-1">
+                <button type="button" class="btn btn-primary btn-sm mx-2" (click)="onAccept(patientData._id)">
+                  Send Prescription
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/dashboard">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

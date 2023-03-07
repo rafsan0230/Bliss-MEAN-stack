@@ -25,6 +25,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { AcceptedPatientComponent } from './accepted-patient/accepted-patient.component';
+import { PrescribeComponent } from './prescribe/prescribe.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AcceptedPatientComponent } from './accepted-patient/accepted-patient.co
     DashboardComponent,
     PatientInfoComponent,
     ThankyouComponent,
-    AcceptedPatientComponent
+    AcceptedPatientComponent,
+    PrescribeComponent
   ],
   imports: [
     BrowserModule,

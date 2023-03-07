@@ -5,23 +5,45 @@ const PatientSchema = mongoose.Schema({
         type: String
       },
       gender: {
-        type: String,
+        type: String
       },
       age: {
-        type: String,
+        type: String
       },
       relationStatus: {
         type: String
       },
       traumaExperience: {
-        type: String
+        type:  String
       },
       email: {
         type: String,
       },
       mentalHealthRate: {
         type: Number
+      },
+      sleepCondition: {
+        type: String
+      },
+      language: {
+        type: String
+      },
+      eatingHabit: {
+        type: String
+      },
+      financialState: {
+        type: String
+      },
+      therapistPreference: {
+        type: String
+      },
+      physicalHealth: {
+        type: String
+      },
+      therapyExpreience: {
+        type: String
       }
+      
 })
 
 module.exports = mongoose.model('Patient', PatientSchema);
