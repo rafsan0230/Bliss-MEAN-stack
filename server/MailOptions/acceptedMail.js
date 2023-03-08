@@ -7,7 +7,7 @@
 
 // const mailBody = require('./../MailOptions/')
 
-const getMailOptions = (receiver) => {
+const getMailOptions = (receiver, prescription) => {
   let mailOptions = {
     from: "bliss.therapyservice@gmail.com",
     to: receiver,
@@ -161,14 +161,16 @@ const getMailOptions = (receiver) => {
         <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
         <tr>
         <td class="pad" style="padding-bottom:10px;padding-top:10px;text-align:center;width:100%;">
-        <h1 style="margin: 0; color: #4f5aba; direction: ltr; font-family: 'Noto Serif', Georgia, serif; font-size: 34px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Thanks for contacting us</span></h1>
+        <h1 style="margin: 0; color: #4f5aba; direction: ltr; font-family: 'Noto Serif', Georgia, serif; font-size: 34px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Thanks for believing in us</span></h1>
         </td>
         </tr>
         <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
         <tr>
         <td class="pad" style="padding-left:10px;padding-right:10px;">
         <div style="color:#201f42;direction:ltr;font-family:Inter, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:180%;text-align:center;mso-line-height-alt:28.8px;">
-        <p style="margin: 0;">"Hello there, Hope you are doing well. We have acknowledged that You have been facing difficulties about your mental health. We know sometime it gets hard to find solution of our issues. That's why we are here to help you. Please reply to this email to confirm your appointment." </p>
+        <p style="margin: 0;">Your prescription in given below for your convenience:  </p>
+        <p style="margin: 0;">"${prescription}" </p>
+        
         </div>
         </td>
         </tr>

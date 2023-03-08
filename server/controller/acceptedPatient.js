@@ -56,7 +56,7 @@ const postAcceptedCouple = async (req, res,) => {
       try {
         const result = await AcceptedCouple.create(req.body);
         //console.log(getMailOptions(req.body.email))
-        transport(getMailOptions(req.body.email));
+        transport(getMailOptions(req.body.email, req.body.pres));
 
         console.log(req.body)
         
@@ -86,7 +86,7 @@ const postAcceptedCouple = async (req, res,) => {
     if (req.body.email) {
       try {
         const result = await AcceptedChild.create(req.body);
-        transport(getMailOptions(req.body.email));
+        transport(getMailOptions(req.body.email, req.body.pres));
         console.log(req.body)
         res.status(201);
         res.send(result);
@@ -109,13 +109,10 @@ const postAcceptedCouple = async (req, res,) => {
     const patient = await PatientTrauma.findOneAndUpdate(filter, update, {
       new:true
     })
-   
-
-
     if (req.body.email) {
       try {
         const result = await AcceptedTrauma.create(req.body);
-        transport(getMailOptions(req.body.email));
+        transport(getMailOptions(req.body.email, req.body.pres));
         // console.log(req.body.data)
         res.status(201);
         res.send(patient);
