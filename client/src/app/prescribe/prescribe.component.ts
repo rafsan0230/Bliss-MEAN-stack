@@ -93,9 +93,9 @@ export class PrescribeComponent {
           .post(this.acceptCoupleURL, {...this.tempPatientDatas, pres : this.prescription})
           .subscribe((response) => {
             console.log(response);
+            this.onDelete(_id);
             this.router.navigate(['dashboard']);
           });
-          this.onDelete(_id);
       });
     }
     if (this.therapist.category === 'child') {
@@ -105,6 +105,7 @@ export class PrescribeComponent {
           .post(this.acceptChildURL, {...this.tempPatientDatas, pres : this.prescription})
           .subscribe((response) => {
             console.log(response);
+            this.onDelete(_id);
             this.router.navigate(['dashboard']);
           });
       });
@@ -116,6 +117,7 @@ export class PrescribeComponent {
           .post(this.acceptTraumaURL, {...this.tempPatientDatas, pres : this.prescription} )
           .subscribe((response) => {
             console.log(response);
+            this.onDelete(_id);
             this.router.navigate(['dashboard']);
           });
       });

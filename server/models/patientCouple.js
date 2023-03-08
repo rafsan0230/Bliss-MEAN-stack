@@ -20,7 +20,7 @@ const PatientCoupleSchema = mongoose.Schema({
     type: String,
   },
   mentalHealthRate: {
-    type: Number
+    type: String
   },
   sleepCondition: {
     type: String

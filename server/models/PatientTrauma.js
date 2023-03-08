@@ -17,10 +17,10 @@ const PatientTraumaSchema = mongoose.Schema({
     type: String
   },
   email: {
-    type: String,
+    type: String
   },
   mentalHealthRate: {
-    type: Number
+    type: String
   },
   sleepCondition: {
     type: String
