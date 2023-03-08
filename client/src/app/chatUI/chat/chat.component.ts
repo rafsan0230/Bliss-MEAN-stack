@@ -165,15 +165,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
   handleCalendly(){
     if(this.form.controls.typeOfTherapy.value == "Couple"){
       if(this.form.controls.traumaExperience.value == "Yes"){
-        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
       }
-      window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+      window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
     }
     if(this.form.controls.typeOfTherapy.value == "For my child"){
       if(this.form.controls.traumaExperience.value == "Yes"){
-        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
       }
-      window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session-trauma');
+      window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
     }
 
   }
