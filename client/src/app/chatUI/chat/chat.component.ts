@@ -41,23 +41,22 @@ export class ChatComponent implements OnInit, AfterViewInit {
   step: number = 0;
   messages: Message[] = [];
   questions: string[] = [
-    'What type of therapy are you looking for?',
-    'What is your gender identity?',
-    'How old are you?',
-    'What is your relationship status?',
-    'Is there any traumatic experience that hurting the patient?',
-    'How would you rate your current mental health condition',
-    'How would you rate your current physical health?',
-    'Are there any specific preference for your therapist?',
-    'Have you ever been in therapy before?',
-
-    'How would you rate your current finacial status?',
-    'Your current eating habit: ',
-    'What is your preferred language?',
-    'What is your current sleeping condition?',
-    'What is your email address?',
-    'Schedule appointment:',
-    'Thanks for helping us to gather necessary information about you. Click submit to submit form.'
+    'What type of therapy do you think is best for you?', //11
+    'How do you identify yourself?', //1
+    'How old are you?', //2
+    'What is your current relationship status?', //3
+    'Have you had any traumatic experience?', //13
+    'How would you rate your current mental health state?', //4
+    'How would you rate your current physical state?', //5
+    'Do you have any specific preferences for your therapist?', //12
+    'Have you had any therapy sessions before?', //10
+    'How would you rate your current financial state?', //6
+    'How are your current eating habits?', //7
+    'What is your preferred language?', //9
+    'What is your current sleeping condition?', //8
+    'What is your email address?', //14
+    'Schedule appointment with the same email above:', //15
+    'Thanks for helping us to gather necessary information about you. Click submit to submit form.' //16
   ];
 
   genderOptions = ['Male', 'Female', 'Other'];
