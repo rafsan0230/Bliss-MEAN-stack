@@ -16,7 +16,7 @@ const TherapistSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-      category: {
+      typeOfTherapy: {
         type: String
       }
 })

@@ -34,9 +34,14 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   private scrollContainer: any;
 
-  readonly coupleURL = 'http://localhost:3001/patientCouple'
-  readonly childURL = 'http://localhost:3001/patientChild'
-  readonly traumaURL = 'http://localhost:3001/patientTrauma'
+  // readonly coupleURL = 'http://localhost:3001/patientCouple'
+  // readonly childURL = 'http://localhost:3001/patientChild'
+  // readonly traumaURL = 'http://localhost:3001/patientTrauma'
+
+
+  readonly patientURL = 'http://localhost:3001/patient'
+
+  
 
   step: number = 0;
   messages: Message[] = [];
@@ -119,37 +124,18 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }, 500);
   }
 
-  postPatientType(){
-    if(this.form.controls.typeOfTherapy.value == "Couple") {
-      return this.http.post(this.coupleURL, this.form.value)
-    }
-    if(this.form.controls.typeOfTherapy.value == "For my child") {
-      return this.http.post(this.childURL, this.form.value)
-    }
-    return undefined;
-  }
-  postPatientTrauma(){
-    if(this.form.controls.traumaExperience.value == "Yes") {
-      return this.http.post(this.traumaURL, this.form.value)
-    }
-    return undefined;
+  postPatient(){
+      return this.http.post(this.patientURL, this.form.value)
   }
 
   handleSubmit () {
-    // if(this.form.valid) {
-      const sendingType = this.postPatientType()
-      if (sendingType){
-        sendingType.subscribe((res) =>
+
+      const sendingPatient = this.postPatient()
+      if (sendingPatient){
+        sendingPatient.subscribe((res) =>
           localStorage.setItem('currentUserData', JSON.stringify(res))
         );
       }
-      const sendingTrauma = this.postPatientTrauma()
-      if (sendingTrauma){
-        sendingTrauma.subscribe((res) =>
-          localStorage.setItem('currentUserData', JSON.stringify(res))
-        );
-      }
-      
       this.router.navigate(['/thankyou'])
   }
 
@@ -163,18 +149,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   handleCalendly(){
-    if(this.form.controls.typeOfTherapy.value == "Couple"){
-      if(this.form.controls.traumaExperience.value == "Yes"){
-        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
-      }
       window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
-    }
-    if(this.form.controls.typeOfTherapy.value == "For my child"){
-      if(this.form.controls.traumaExperience.value == "Yes"){
-        window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
-      }
-      window.Calendly.showPopupWidget('https://calendly.com/nafizfuad0230/bliss-therapy-session');
-    }
-
   }
 }

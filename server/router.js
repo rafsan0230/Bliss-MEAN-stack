@@ -10,17 +10,14 @@ router.post("/login", therapistController.login);
 router.post("/register", therapistController.create);
 router.get("/therapist", therapistController.getAll);
 
-// router.get("/patient", patientController.getPatients);
-// router.post("/patient", patientController.postPatient);
+router.get("/patient", patientController.getPatients);
+router.post("/patient", patientController.postPatient);
 
 router.get("/patientCouple", patientController.getCouplePatients);
-router.post("/patientCouple", patientController.postCouplePatient);
 
 router.get("/patientChild", patientController.getChildPatients);
-router.post("/patientChild", patientController.postChildPatient);
 
 router.get("/patientTrauma", patientController.getTraumaPatients);
-router.post("/patientTrauma", patientController.postTraumaPatient);
 
 router.delete("/patientTrauma/:id", patientController.deleteTraumaPatient);
 router.delete("/patientChild/:id", patientController.deleteChildPatient);
