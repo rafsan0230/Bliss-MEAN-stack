@@ -6,8 +6,6 @@ const {getMailOptions} = require('./../MailOptions/acceptedMail');
 
 const getPatients = async (req, res) => {
   try {
-    console.log(req.typeOfTherapy)
-    const cat = req.typeOfTherapy;
     const patients = await Patient.find();
     res.status(200).send(patients);
   } catch (error) {
@@ -80,7 +78,6 @@ const postPatient = async (req, res,) => {
   if (req.body.email) {
     try {
       const result = await Patient.create(req.body);
-      console.log(req.body)
       res.status(201);
       res.send(result);
       return result;
@@ -96,7 +93,6 @@ const findPatientbyID = async (req, res) => {
     const id = req.params.id;
     try {
       const patient = await Patient.findById(id);
-      console.log(patient)
       res.status(201);
       res.send(patient);
     }
@@ -106,7 +102,6 @@ const findPatientbyID = async (req, res) => {
   }
 
   const postPrescription = async (req, res,) => {
-    console.log("from controller",req.body)
     const id = req.body._id
     const filter= {_id : id}
     const update = {$set: {pres : req.body.pres}}
@@ -118,7 +113,6 @@ const findPatientbyID = async (req, res) => {
       try {
         // const result = await Patient.create(req.body);
         transport(getMailOptions(req.body.email, req.body.pres));
-        // console.log(req.body.data)
         // res.status(201);
         res.send(patient);
       } catch (error) {
@@ -133,7 +127,6 @@ const findPatientbyID = async (req, res) => {
     const id = req.params.id;
     try {
       const patient = await Patient.findByIdAndDelete(id);
-      console.log(patient)
       res.status(201);
       res.send(patient);
     }

@@ -1,12 +1,3 @@
-// let mailOptions = {
-//   from: "bliss.therapyservice@gmail.com",
-//   to: req.body.email,
-//   subject: "Sending Email using Node.js",
-//   text: "That was easy!",
-// };
-
-// const mailBody = require('./../MailOptions/')
-
 const getMailOptions = (receiver, prescription) => {
   let mailOptions = {
     from: "bliss.therapyservice@gmail.com",
@@ -225,7 +216,7 @@ const getMailOptions = (receiver, prescription) => {
         </body>
         </html>`,
 
-    // text: "Hello there, Hope you are doing well. We have acknowledged that You have been facing difficulties about your mental health. We know sometime it gets hard to find solution of our issues. That's why we are here to help you. Please reply to this email to confirm your appointment.",
+    
   };
   return mailOptions;
 };

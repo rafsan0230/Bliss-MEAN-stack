@@ -34,10 +34,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   private scrollContainer: any;
 
-  // readonly coupleURL = 'http://localhost:3001/patientCouple'
-  // readonly childURL = 'http://localhost:3001/patientChild'
-  // readonly traumaURL = 'http://localhost:3001/patientTrauma'
-
 
   readonly patientURL = 'http://localhost:3001/patient'
 

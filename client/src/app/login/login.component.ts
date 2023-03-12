@@ -36,17 +36,11 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    // if(this.therapistForm.valid) {
-    //   this.postLogin().subscribe((res) =>
-    //     localStorage.setItem('currentUserData', JSON.stringify(res))
-    //   );
-    // }
 
     const { email, password } = this.therapistForm.value;
     if (email && password) {
       this.authService.loginTherapist({ email, password }).subscribe({
         next: (res) => {
-          console.log(res);
           this.postLogin().subscribe((res) => {
             localStorage.setItem(
               'accessToken',

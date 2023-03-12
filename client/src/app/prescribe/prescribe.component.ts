@@ -28,7 +28,6 @@ export class PrescribeComponent {
 
   ngOnInit(){
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id)
     this.http.get(this.patientURL + '/' + id).subscribe((response) => {
       this.patientData = response;
     });
