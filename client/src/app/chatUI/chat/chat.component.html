@@ -1,14 +1,10 @@
 <div class="container">
     <div class="message-container" #scrollMe>
       <div class="message" *ngFor="let message of messages" [class.user-message]="message.user" [class.system-message]="!message.user">
-        <!-- <img class="avatar" src="../../../assets/logo-black-modified.png" alt=""> -->
         <div class="bubble">{{message.content}}</div>
       </div>
     </div>
     <div class="input-container">
-      <!-- <app-form-field *ngIf="step === 0" type="text" [control]="form.controls.firstName" (nextStepEvent)="handleNewInfo($event)"></app-form-field>
-      <app-form-field *ngIf="step === 1" type="text" [control]="form.controls.lastName" (nextStepEvent)="handleNewInfo($event)"></app-form-field> -->
-      <!-- <app-form-field *ngIf="step === 3" type="date" [control]="form.controls.dob" (nextStepEvent)="handleNewInfo($event)"></app-form-field> -->
       <app-form-field *ngIf="step === 0" type="select" [control]="form.controls.gender" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="genderOptions"></app-form-field>
       <app-form-field *ngIf="step === 1" type="select" [control]="form.controls.age" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="ageOptions"></app-form-field>
       <app-form-field *ngIf="step === 2" type="select" [control]="form.controls.relationStatus" (nextStepEvent)="handleNewInfo($event)" [selectOptions]="relationStatusoption"></app-form-field>
