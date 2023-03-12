@@ -1,48 +1,75 @@
 const Patient = require('./../models/patient');
-const PatientCouple = require('./../models/patientCouple');
-const PatientChild = require('./../models/patientChild');
-const PatientTrauma = require('./../models/PatientTrauma');
+const transport = require('./../middleware/nodemailer');
+const {getMailOptions} = require('./../MailOptions/acceptedMail');
 
 
 
 const getPatients = async (req, res) => {
   try {
-    console.log(req.category)
+    console.log(req.typeOfTherapy)
     const cat = req.typeOfTherapy;
-    const patients = await Patient.find({ category: cat });
+    const patients = await Patient.find();
     res.status(200).send(patients);
   } catch (error) {
     res.status(500).send(error);
   }
 }
 const getCouplePatients = async (req, res) => {
-  const therapistType = req.body.typeOfTherapy;
   try {
-    console.log(therapistType)
-    const patients = await Patient.find({ typeOfTherapy: therapistType });
+    const patients = await Patient.find({ typeOfTherapy: "Couple" , pres :  null  });
     res.status(200).send(patients);
   } catch (error) {
     res.status(500).send(error);
   }
 }
 const getChildPatients = async (req, res) => {
-  const therapistType = req.body.typeOfTherapy;
   try {
-    console.log(therapistType)
-    const patients = await Patient.find({ typeOfTherapy: therapistType });
+    const patients = await Patient.find({ typeOfTherapy: "For my child",  pres :  null   });
     res.status(200).send(patients);
   } catch (error) {
     res.status(500).send(error);
   }
 }
-const getTraumaPatients = async (req, res) => {
-  const therapistType = req.body.typeOfTherapy;
+
+const getIndividualPatients = async (req, res) => {
   try {
-    console.log(therapistType)
-    const patients = await Patient.find({ typeOfTherapy: therapistType });
+    const patients = await Patient.find({ typeOfTherapy: "Individual",  pres :  null   });
     res.status(200).send(patients);
   } catch (error) {
     res.status(500).send(error);
+  }
+}
+
+const getAcceptedCouple = async (req, res) => {
+  try {
+    const patient = await Patient.find({ typeOfTherapy: "Couple" , pres : { $ne : null } });
+    res.status(201);
+    res.send(patient);
+  }
+  catch (error) {
+      res.send(error);
+  }
+}
+
+const getAcceptedChild = async (req, res) => {
+  try {
+    const patient = await Patient.find({ typeOfTherapy: "For my child" , pres : { $ne : null } });
+    res.status(201);
+    res.send(patient);
+  }
+  catch (error) {
+      res.send(error);
+  }
+}
+
+const getAcceptedIndividual = async (req, res) => {
+  try {
+    const patient = await Patient.find({ typeOfTherapy: "Individual" , pres : { $ne : null } });
+    res.status(201);
+    res.send(patient);
+  }
+  catch (error) {
+      res.send(error);
   }
 }
 
@@ -65,83 +92,54 @@ const postPatient = async (req, res,) => {
   }
 }
 
+const findPatientbyID = async (req, res) => {
+    const id = req.params.id;
+    try {
+      const patient = await Patient.findById(id);
+      console.log(patient)
+      res.status(201);
+      res.send(patient);
+    }
+    catch (error) {
+        res.send(error);
+    }
+  }
 
+  const postPrescription = async (req, res,) => {
+    console.log("from controller",req.body)
+    const id = req.body._id
+    const filter= {_id : id}
+    const update = {$set: {pres : req.body.pres}}
 
+    const patient = await Patient.findOneAndUpdate(filter, update, {
+      new:true
+    })
+    if (req.body.email) {
+      try {
+        // const result = await Patient.create(req.body);
+        transport(getMailOptions(req.body.email, req.body.pres));
+        // console.log(req.body.data)
+        // res.status(201);
+        res.send(patient);
+      } catch (error) {
+        console.log(error);
+      }
+    }else{
+      res.status(400).send('Insufficient data');
+    }
+  }
 
+  const deletePatient = async (req, res) => {
+    const id = req.params.id;
+    try {
+      const patient = await Patient.findByIdAndDelete(id);
+      console.log(patient)
+      res.status(201);
+      res.send(patient);
+    }
+    catch (error) {
+        res.send(error);
+    }
+  }
 
-const deleteTraumaPatient = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const patient = await PatientTrauma.findByIdAndDelete(id);
-    console.log(patient)
-    res.status(201);
-    res.send(patient);
-  }
-  catch (error) {
-      res.send(error);
-  }
-}
-const deleteCouplePatient = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const patient = await PatientCouple.findByIdAndDelete(id);
-    console.log(patient)
-    res.status(201);
-    res.send(patient);
-  }
-  catch (error) {
-      res.send(error);
-  }
-}
-const deleteChildPatient = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const patient = await PatientChild.findByIdAndDelete(id);
-    console.log(patient)
-    res.status(201);
-    res.send(patient);
-  }
-  catch (error) {
-      res.send(error);
-  }
-}
-
-const findChildPatientbyID = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const patient = await PatientChild.findById(id);
-    console.log(patient)
-    res.status(201);
-    res.send(patient);
-  }
-  catch (error) {
-      res.send(error);
-  }
-}
-const findCouplePatientbyID = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const patient = await PatientCouple.findById(id);
-    console.log(patient)
-    res.status(201);
-    res.send(patient);
-  }
-  catch (error) {
-      res.send(error);
-  }
-}
-const findTraumaPatientbyID = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const patient = await PatientTrauma.findById(id);
-    console.log(patient)
-    res.status(201);
-    res.send(patient);
-  }
-  catch (error) {
-      res.send(error);
-  }
-}
-
-
-module.exports = { getPatients, postPatient, getTraumaPatients, getChildPatients, getCouplePatients, deleteTraumaPatient, deleteChildPatient, deleteCouplePatient, findChildPatientbyID, findCouplePatientbyID, findTraumaPatientbyID};
+module.exports = { getPatients, postPatient, getIndividualPatients, getChildPatients, getCouplePatients, getAcceptedCouple, getAcceptedChild, getAcceptedIndividual, findPatientbyID, postPrescription, deletePatient};

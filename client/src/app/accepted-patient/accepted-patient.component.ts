@@ -19,20 +19,20 @@ export class AcceptedPatientComponent {
 
   readonly acceptCoupleURL = 'http://localhost:3001/acceptedCouple';
   readonly acceptChildURL = 'http://localhost:3001/acceptedChild';
-  readonly acceptTraumaURL = 'http://localhost:3001/acceptedTrauma';
+  readonly acceptIndividualURL = 'http://localhost:3001/acceptedIndividual';
 
   retrievedObject = localStorage.getItem('currentUser')!;
   therapist = JSON.parse(this.retrievedObject);
 
   getPatient() {
-    if (this.therapist.category === 'couple') {
+    if (this.therapist.typeOfTherapy === 'Couple') {
       return this.http.get(this.acceptCoupleURL);
     }
-    if (this.therapist.category === 'child') {
+    if (this.therapist.typeOfTherapy === 'For my child') {
       return this.http.get(this.acceptChildURL);
     }
-    if (this.therapist.category === 'trauma') {
-      return this.http.get(this.acceptTraumaURL);
+    if (this.therapist.typeOfTherapy === 'Individual') {
+      return this.http.get(this.acceptIndividualURL);
     }
     return undefined;
   }

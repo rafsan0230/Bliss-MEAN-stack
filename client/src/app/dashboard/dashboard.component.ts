@@ -19,44 +19,39 @@ export class DashboardComponent {
 
   readonly coupleURL = 'http://localhost:3001/patientCouple';
   readonly childURL = 'http://localhost:3001/patientChild';
-  readonly traumaURL = 'http://localhost:3001/patientTrauma';
+  readonly individualURL = 'http://localhost:3001/patientIndividual';
+
+  readonly patientURL = 'http://localhost:3001/patient';
 
   retrievedObject = localStorage.getItem('currentUser')!;
   therapist = JSON.parse(this.retrievedObject);
 
   getPatient() {
-    if (this.therapist.category === 'couple') {
+    console.log(this.therapist.typeOfTherapy);
+    if (this.therapist.typeOfTherapy === 'Couple') {
       return this.http.get(this.coupleURL);
     }
-    if (this.therapist.category === 'child') {
+    if (this.therapist.typeOfTherapy === 'For my child') {
       return this.http.get(this.childURL);
     }
-    if (this.therapist.category === 'trauma') {
-      return this.http.get(this.traumaURL);
+    if (this.therapist.typeOfTherapy === 'Individual') {
+      return this.http.get(this.individualURL);
     }
     return undefined;
   }
 
   ngOnInit() {
     const getting = this.getPatient();
+    // console.log(getting);
     if (getting) {
       getting.subscribe((response) => {
-        //console.log(response);
+        console.log(response);
         this.patientDatas = response;
       });
     }
   }
   deletePatient(_id: string) {
-    if (this.therapist.category === 'couple') {
-      return this.http.delete(this.coupleURL + '/' + _id);
-    }
-    if (this.therapist.category === 'child') {
-      return this.http.delete(this.childURL + '/' + _id);
-    }
-    if (this.therapist.category === 'trauma') {
-      return this.http.delete(this.traumaURL + '/' + _id);
-    }
-    return undefined;
+    return this.http.delete(this.patientURL + '/' + _id);
   }
 
   onDelete(_id: string) {
